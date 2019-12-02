@@ -31,9 +31,9 @@ namespace MobileSample
 
 			try
 			{
-				var r = await Authentication.AuthenticateAsync(
+				result = await Authentication.AuthenticateAsync(
 					new Uri("myapp://"),
-					new Uri("https://192.168.2.193:5001"),
+					new Uri("https://myapp.com"),
 					scheme);
 			}
 			catch (Exception ex)
