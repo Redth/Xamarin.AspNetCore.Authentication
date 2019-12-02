@@ -27,7 +27,6 @@ namespace Sample.Controllers
 		}
 
 		[HttpGet]
-		[Authorize(AuthenticationSchemes ="Facebook")]
 		public IEnumerable<WeatherForecast> Get()
 		{
 			var rng = new Random();
