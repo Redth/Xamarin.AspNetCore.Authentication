@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.AspNetCore.Auth.Mobile;
+using Xamarin.Essentials.Authentication;
 using Xamarin.Forms;
 
 namespace MobileSample

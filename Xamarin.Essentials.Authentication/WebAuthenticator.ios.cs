@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UIKit;
 
-namespace Xamarin.AspNetCore.Auth.Mobile
+namespace Xamarin.Essentials.Authentication
 {
 	public static class WebAuthenticator
 	{

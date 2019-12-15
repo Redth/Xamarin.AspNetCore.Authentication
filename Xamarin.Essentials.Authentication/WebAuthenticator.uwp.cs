@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xamarin.AspNetCore.Auth.Mobile
+namespace Xamarin.Essentials.Authentication
 {
 	internal static class WebAuthenticator
 	{

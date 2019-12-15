@@ -22,7 +22,13 @@ namespace MobileSample.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Xamarin.Essentials.Authentication.Facebook.Platform.FinishedLaunching(app, options);
+            Xamarin.Essentials.Authentication.Facebook.Platform.Init();
+
+            Xamarin.Essentials.Authentication.Platform.Init();
+
             global::Xamarin.Forms.Forms.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
@@ -30,10 +36,18 @@ namespace MobileSample.iOS
 
 		public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 		{
-			if (Xamarin.AspNetCore.Auth.Mobile.Platform.OpenUrl(app, url, options))
+            if (Xamarin.Essentials.Authentication.Platform.OpenUrl(app, url, options))
 				return true;
 
 			return base.OpenUrl(app, url, options);
 		}
-	}
+
+        public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+        {
+            if (Xamarin.Essentials.Authentication.Facebook.Platform.OpenUrl(application, url, sourceApplication, annotation))
+                return true;
+
+            return base.OpenUrl(application, url, sourceApplication, annotation);
+        }
+    }
 }

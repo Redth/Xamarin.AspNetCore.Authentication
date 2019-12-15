@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Windows.ApplicationModel.Activation;
 
-namespace Xamarin.AspNetCore.Auth.Mobile
+namespace Xamarin.Essentials.Authentication
 {
-	public class Platform
+	public partial class Platform
 	{
 		public static void OnActivated(IActivatedEventArgs args)
 		{

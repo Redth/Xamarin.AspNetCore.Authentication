@@ -11,6 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.AspNetCore.Auth.Mobile\Xamarin.AspNetCore.Auth.Mobile.csproj" />
+    <ProjectReference Include="..\..\Xamarin.Essentials.Authentication\Xamarin.Essentials.Authentication.csproj" />
   </ItemGroup>
 </Project>

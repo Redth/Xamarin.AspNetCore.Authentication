@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Xamarin.AspNetCore.Auth.Mobile
+namespace Xamarin.Essentials.Authentication
 {
 	public class AuthResult
 	{

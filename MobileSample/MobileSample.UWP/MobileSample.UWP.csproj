@@ -148,10 +148,6 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Xamarin.AspNetCore.Auth.Mobile\Xamarin.AspNetCore.Auth.Mobile.csproj">
-      <Project>{53d684e4-959e-42df-a047-2151145c762b}</Project>
-      <Name>Xamarin.AspNetCore.Auth.Mobile</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MobileSample\MobileSample.csproj">
       <Project>{CF520742-1145-4E48-AB6A-4931447E1BFE}</Project>
       <Name>MobileSample</Name>

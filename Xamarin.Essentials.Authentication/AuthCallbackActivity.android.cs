@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Xamarin.AspNetCore.Auth.Mobile
+namespace Xamarin.Essentials.Authentication
 {
 	public abstract class AuthCallbackActivity : Activity
 	{

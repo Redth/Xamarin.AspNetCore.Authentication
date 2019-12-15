@@ -2,12 +2,23 @@
 using Foundation;
 using UIKit;
 
-namespace Xamarin.AspNetCore.Auth.Mobile
+namespace Xamarin.Essentials.Authentication
 {
-	public class Platform
+	public static partial class Platform
 	{
+		public static void Init(string appleSignInScheme = "Apple")
+		{
+			// Use native apple sign in if available
+			if (UIDevice.CurrentDevice.CheckSystemVersion(13,0))
+				RegisterAuthenticator<NativeAppleSignInAuthenticator>(appleSignInScheme);
+		}
+
+		// TODO: Make smart to call authenticator's open url maybe?
 		public static bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 			=> WebAuthenticator.UrlOpened(new Uri(url.AbsoluteString));
+
+		public static UIViewController GetCurrentViewController()
+			=> PresentingViewController;
 
 		internal static UIViewController PresentingViewController
 		{

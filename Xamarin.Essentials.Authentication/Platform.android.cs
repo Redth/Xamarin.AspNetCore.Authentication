@@ -5,14 +5,21 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 
-namespace Xamarin.AspNetCore.Auth.Mobile
+namespace Xamarin.Essentials.Authentication
 {
-	public class Platform
+	public static partial class Platform
 	{
 		static ActivityLifecycleContextListener lifecycleListener;
 
 		internal static Context AppContext =>
 			Application.Context;
+
+
+		public static Activity GetCurrentActivity()
+			=> GetCurrentActivity(false);
+
+		public static Context GetContext()
+			=> GetCurrentActivity(false) ?? Application.Context;
 
 		internal static Activity GetCurrentActivity(bool throwOnNull)
 		{

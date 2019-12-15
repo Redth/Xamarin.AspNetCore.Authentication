@@ -20,7 +20,7 @@ namespace MobileSample.Droid
 
             base.OnCreate(savedInstanceState);
 
-			Xamarin.AspNetCore.Auth.Mobile.Platform.Init(this.Application);
+			Xamarin.Essentials.Authentication.Platform.Init(this.Application);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
@@ -36,14 +36,14 @@ namespace MobileSample.Droid
 		{
 			base.OnResume();
 
-			Xamarin.AspNetCore.Auth.Mobile.Platform.OnResume(Intent);
+			Xamarin.Essentials.Authentication.Platform.OnResume(Intent);
 		}
 	}
 
 	[Activity(NoHistory = true, LaunchMode = LaunchMode.SingleTop)]
 	[IntentFilter(new[] { Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable }, 
 		DataScheme = "myapp")]
-	public class AuthCallbackActivity : Xamarin.AspNetCore.Auth.Mobile.AuthCallbackActivity
+	public class AuthCallbackActivity : Xamarin.Essentials.Authentication.AuthCallbackActivity
 	{
 	}
 }
