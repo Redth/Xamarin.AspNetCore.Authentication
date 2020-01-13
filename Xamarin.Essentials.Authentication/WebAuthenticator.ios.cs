@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using AuthenticationServices;
+using Foundation;
 using SafariServices;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace Xamarin.Essentials.Authentication
 
 			tcsAuth = new TaskCompletionSource<AuthResult>();
 			WebAuthenticator.redirectUri = redirectUri;
-			
+
 			try
 			{
 				var scheme = redirectUri.Scheme;
@@ -33,17 +34,24 @@ namespace Xamarin.Essentials.Authentication
 					return await tcsAuth.Task;
 				}
 
+				void authSessionCallback(NSUrl callbackUrl, NSError error)
+				{
+					if (error == null)
+						UrlOpened(callbackUrl);
+					else
+						tcsAuth.TrySetException(new NSErrorException(error));
+				}
+
+				if (UIDevice.CurrentDevice.CheckSystemVersion(12, 0))
+				{
+					var was = new ASWebAuthenticationSession(new NSUrl(uri.OriginalString), scheme, authSessionCallback);
+					was.Start();
+					return await tcsAuth.Task;
+				}
+
 				if (UIDevice.CurrentDevice.CheckSystemVersion(11, 0))
 				{
-					var sf = new SFAuthenticationSession(new NSUrl(uri.OriginalString), scheme,
-						(callbackUrl, Error) =>
-						{
-							if (Error == null)
-								UrlOpened(callbackUrl);
-							else
-								tcsAuth.TrySetException(new Exception($"SFAuthenticationSession Error: {Error.ToString()}"));
-						}
-					);
+					var sf = new SFAuthenticationSession(new NSUrl(uri.OriginalString), scheme, authSessionCallback);
 					sf.Start();
 					return await tcsAuth.Task;
 				}
@@ -64,6 +72,7 @@ namespace Xamarin.Essentials.Authentication
 							}
 						},
 					};
+
 					currentViewController = controller;
 					await Platform.PresentingViewController.PresentViewControllerAsync(controller, true);
 					return await tcsAuth.Task;
